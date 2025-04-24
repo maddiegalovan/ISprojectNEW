@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Emoji Mood Matcher</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      margin: 0;
+      padding: 2rem;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .emoji-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+      gap: 1rem;
+      max-width: 400px;
+      margin: 2rem auto;
+    }
+    .emoji {
+      font-size: 2rem;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .emoji:hover {
+      transform: scale(1.2);
+    }
+    .response {
+      margin-top: 2rem;
+      font-size: 1.2rem;
+      color: #333;
+      background-color: #fff;
+      padding: 1rem;
+      border-radius: 10px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>What's Your Mood? 😄</h1>
+  <p>Click an emoji below and we'll match your vibe!</p>
+
+  <div class="emoji-grid">
+    <span class="emoji" onclick="matchMood('happy')">😊</span>
+    <span class="emoji" onclick="matchMood('sad')">😢</span>
+    <span class="emoji" onclick="matchMood('angry')">😠</span>
+    <span class="emoji" onclick="matchMood('excited')">🤩</span>
+    <span class="emoji" onclick="matchMood('tired')">😴</span>
+    <span class="emoji" onclick="matchMood('silly')">😜</span>
+  </div>
+
+  <div id="response" class="response"></div>
+
+  <script>
+    const moodResponses = {
+      happy: [
+        "Keep spreading those good vibes! ✨",
+        "Happiness looks great on you!",
+        "You're the reason someone smiled today 😊"
+      ],
+      sad: [
+        "It’s okay to feel down. Here’s a virtual hug 🤗",
+        "Better days are coming 🌈",
+        "You matter. Keep going 💙"
+      ],
+      angry: [
+        "Deep breath. Inhale... Exhale... 🧘",
+        "Let’s channel that fire into something positive 🔥",
+        "Take a walk, shake it off, you got this 💪"
+      ],
+      excited: [
+        "Your energy is contagious! ⚡",
+        "Time to chase your dreams 🚀",
+        "Live it up! Today is your day 🎉"
+      ],
+      tired: [
+        "You deserve rest. Take a break 😌",
+        "Even heroes need sleep 💤",
+        "Recharge and come back stronger 🔋"
+      ],
+      silly: [
+        "Never stop being goofy 😜",
+        "You're a walking smile generator 😂",
+        "Dance like nobody’s watching! 💃🕺"
+      ]
+    };
+
+    function matchMood(mood) {
+      const messages = moodResponses[mood];
+      const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+      document.getElementById('response').textContent = randomMsg;
+    }
+  </script>
+</body>
+</html>
